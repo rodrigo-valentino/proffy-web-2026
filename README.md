@@ -1,75 +1,35 @@
-# React + TypeScript + Vite
+# Proffy Web
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicação web para conectar estudantes e professores, construída com React, TypeScript, Vite e Tailwind CSS.
 
-Currently, two official plugins are available:
+## Executar localmente
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Requisitos: Node.js e npm.
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+O Vite informa no terminal o endereço local da aplicação. Para validar o projeto:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+npm run build
+npm run lint
 ```
+
+## Rotas implementadas
+
+- `/` — página inicial.
+- `/study` — busca de professores.
+- `/give-classes` — formulário para cadastro de professor.
+- `/give-classes/success` — confirmação de cadastro.
+- `/profile` — perfil do professor, com edição dos dados e horários.
+- `/sign-in` e `/sign-up` — telas de autenticação existentes.
+
+## Decisões técnicas
+
+- O formulário usa React Hook Form e Zod para gerenciar campos e validar dados, incluindo o limite de 300 caracteres da biografia, telefone com máscara e horários válidos.
+- Os dados do professor são armazenados no `localStorage` para permanecerem disponíveis entre as telas e após recarregar a aplicação. O projeto ainda não possui uma API de cadastro.
+- Os campos de nome e e-mail são preenchidos com os dados do usuário de demonstração da página inicial; eles podem ser editados no perfil.
+- Horários são dinâmicos: podem ser adicionados no formulário e adicionados ou excluídos no perfil.
