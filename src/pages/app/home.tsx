@@ -56,7 +56,7 @@ export function Home() {
                             className='flex gap-6 w-[282px] h-[104px] bg-green transation: hover:bg-green-dark rounded-lg justify-center items-center cursor-pointer'
                         >
                             <Presentation size={40} className='text-white' />
-                            <span className='font-archivo-bold text-2xl text-white'>Dar aula</span>
+                            <span className='font-archivo-bold text-2xl text-white'>Dar aulas</span>
                         </Link>
                     </div>
                 </div>
